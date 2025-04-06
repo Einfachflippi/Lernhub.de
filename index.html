@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schulhilfe: Besser werden!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    h2 {
+      margin: 20px 0;
+      font-size: 1.5em;
+    }
+    .subject-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .subject {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    .subject:hover {
+      background-color: #e0e0e0;
+    }
+    .subject h3 {
+      margin: 0;
+      color: #4CAF50;
+    }
+    .content {
+      width: 80%;
+      max-width: 900px;
+      margin-top: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .content h4 {
+      margin: 10px 0;
+    }
+    .exercise {
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Schulhilfe: Besser werden!</h1>
+  <p>Verbessere deine Noten in Mathe, Latein, Englisch, Physik und Deutsch!</p>
+</header>
+
+<div class="subject-container">
+  <div class="subject" onclick="loadMathContent()">
+    <h3>Mathe</h3>
+  </div>
+  <div class="subject" onclick="loadLatinContent()">
+    <h3>Latein</h3>
+  </div>
+  <div class="subject" onclick="loadEnglishContent()">
+    <h3>Englisch</h3>
+  </div>
+  <div class="subject" onclick="loadPhysicsContent()">
+    <h3>Physik</h3>
+  </div>
+  <div class="subject" onclick="loadGermanDictation()">
+    <h3>Deutsch Diktate</h3>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <!-- Dynamische Inhalte werden hier eingefügt -->
+</div>
+
+<footer>
+  <p>&copy; 2025 Schulhilfe - Deine Lernplattform</p>
+</footer>
+
+<script>
+// Funktion, um Mathe-Inhalte anzuzeigen
+function loadMathContent() {
+  document.getElementById("content").innerHTML = `
+    <h4>Mathematik Übungen</h4>
+    <p>Teste dein Wissen mit diesen Mathe-Aufgaben!</p>
+    <div class="exercise">
+      <p>1 + 1 = ?</p>
+      <button onclick="alert('Richtig!')">Antwort: 2</button>
+    </div>
+    <div class="exercise">
+      <p>5 * 6 = ?</p>
+      <button onclick="alert('Richtig!')">Antwort: 30</button>
+    </div>
+  `;
+}
+
+// Funktion, um Latein-Inhalte anzuzeigen
+function loadLatinContent() {
+  document.getElementById("content").innerHTML = `
+    <h4>Latein Übungen</h4>
+    <p>Übe deine Lateinkenntnisse mit diesen Aufgaben!</p>
+    <div class="exercise">
+      <p>Was ist der Akkusativ von "puella" (Mädchen)?</p>
+      <button onclick="alert('Richtig!')">Antwort: puellam</button>
+    </div>
+  `;
+}
+
+// Funktion, um Englisch-Inhalte anzuzeigen
+function loadEnglishContent() {
+  document.getElementById("content").innerHTML = `
+    <h4>Englisch Übungen</h4>
+    <p>Teste dein Englisch-Wissen!</p>
+    <div class="exercise">
+      <p>How do you say "Hund" in English?</p>
+      <button onclick="alert('Richtig!')">Antwort: Dog</button>
+    </div>
+  `;
+}
+
+// Funktion, um Physik-Inhalte anzuzeigen
+function loadPhysicsContent() {
+  document.getElementById("content").innerHTML = `
+    <h4>Physik Übungen</h4>
+    <p>Teste dein Wissen über Physik!</p>
+    <div class="exercise">
+      <p>Was ist die Einheit der Geschwindigkeit?</p>
+      <button onclick="alert('Richtig!')">Antwort: m/s</button>
+    </div>
+  `;
+}
+
+// Funktion, um Deutsch Diktat zu starten
+function loadGermanDictation() {
+  document.getElementById("content").innerHTML = `
+    <h4>Deutsch Diktat</h4>
+    <p>Schreibe den folgenden Satz korrekt:</p>
+    <p id="dictation-text">Der Hund läuft schnell durch den Park.</p>
+    <textarea placeholder="Schreibe hier deinen Satz..." id="userInput"></textarea>
+    <button onclick="checkDictation()">Prüfen</button>
+  `;
+}
+
+// Funktion, um das Diktat zu überprüfen
+function checkDictation() {
+  const correctSentence = "Der Hund läuft schnell durch den Park.";
+  const userInput = document.getElementById("userInput").value;
+
+  if (userInput.trim() === correctSentence) {
+    alert("Richtig! Sehr gut.");
+  } else {
+    alert("Leider falsch. Versuche es noch einmal!");
+  }
+}
+</script>
+
+</body>
+</html>
